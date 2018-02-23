@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2008-2010 Andrey Rijov <ANDron142@yandex.ru>
+** Copyright (C) 2018 Kevin Peng
 **
 ** This file is part of AQEMU.
 **
