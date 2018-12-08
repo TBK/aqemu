@@ -21,6 +21,7 @@
 **
 ****************************************************************************/
 
+#include <unistd.h>
 #include <QSettings>
 #include <QRegExp>
 #include <QProcess>
@@ -2102,6 +2103,8 @@ bool System_Info::Delete_From_Used_USB_List( const VM_USB &device )
 
 bool System_Info::Update_Host_USB()
 {
+	if (getuid())
+	{
 	QList<VM_USB> list;
 	
 	if( QFile::exists("/sys/bus/usb") )
@@ -2126,6 +2129,7 @@ bool System_Info::Update_Host_USB()
 	AQError( "bool System_Info::Update_Host_USB()",
 			 "Cannot read USB information from /sys, /proc, /dev!" );
 	return false;
+	}
 }
 
 bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )
