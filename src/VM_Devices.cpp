@@ -2405,7 +2405,6 @@ VM_Net_Card_Native::VM_Net_Card_Native()
     Network_Mode = VM::Net_Mode_Native_NIC;
 	Card_Model = "";
 	MAC = "";
-	VLAN = 0;
 	Name = "";
 	Hostname = "";
 	PortDev = "";
@@ -2439,9 +2438,7 @@ VM_Net_Card_Native::VM_Net_Card_Native()
 	VNet_hdr = false;
 	VHost = false;
 	VHostFd = false;
-	
 	_Use_MAC = false;
-	_Use_VLAN = false;
 	_Use_Name = false;
 	_Use_Hostname = false;
 	_Use_File_Descriptor = false;
@@ -2481,7 +2478,6 @@ VM_Net_Card_Native::VM_Net_Card_Native( const VM_Net_Card_Native &nc )
 	Network_Mode = nc.Get_Network_Type();
 	Card_Model = nc.Get_Card_Model();
 	MAC = nc.Get_MAC_Address();
-	VLAN = nc.Get_VLAN();
 	Name = nc.Get_Name();
 	Hostname = nc.Get_Hostname();
 	PortDev = nc.Get_PortDev();
@@ -2517,7 +2513,6 @@ VM_Net_Card_Native::VM_Net_Card_Native( const VM_Net_Card_Native &nc )
 	VHostFd = nc.Get_VHostFd();
 	
 	_Use_MAC = nc.Use_MAC_Address();
-	_Use_VLAN = nc.Use_VLAN();
 	_Use_Name = nc.Use_Name();
 	_Use_Hostname = nc.Use_Hostname();
 	_Use_File_Descriptor = nc.Use_File_Descriptor();
@@ -2557,7 +2552,6 @@ bool VM_Net_Card_Native::operator==( const VM_Net_Card_Native &nc ) const
 	if( Network_Mode == nc.Get_Network_Type() &&
 		Card_Model == nc.Get_Card_Model() &&
 		MAC == nc.Get_MAC_Address() &&
-		VLAN == nc.Get_VLAN() &&
 		Name == nc.Get_Name() &&
 		Hostname == nc.Get_Hostname() &&
 		PortDev == nc.Get_PortDev() &&
@@ -2592,7 +2586,6 @@ bool VM_Net_Card_Native::operator==( const VM_Net_Card_Native &nc ) const
 		VHost == nc.Get_VHost() &&
 		VHostFd == nc.Get_VHostFd() &&
 		_Use_MAC == nc.Use_MAC_Address() &&
-		_Use_VLAN == nc.Use_VLAN() &&
 		_Use_Name == nc.Use_Name() &&
 		_Use_Hostname == nc.Use_Hostname() &&
 		_Use_File_Descriptor == nc.Use_File_Descriptor() &&
@@ -2684,26 +2677,6 @@ const QString &VM_Net_Card_Native::Get_MAC_Address() const
 void VM_Net_Card_Native::Set_MAC_Address( const QString &ma )
 {
 	MAC = ma;
-}
-
-bool VM_Net_Card_Native::Use_VLAN() const
-{
-	return _Use_VLAN;
-}
-
-void VM_Net_Card_Native::Use_VLAN( bool use )
-{
-	_Use_VLAN = use;
-}
-
-int VM_Net_Card_Native::Get_VLAN() const
-{
-	return VLAN;
-}
-
-void VM_Net_Card_Native::Set_VLAN( int vl )
-{
-	VLAN = vl;
 }
 
 bool VM_Net_Card_Native::Use_Name() const
@@ -3370,7 +3343,6 @@ VM_Net_Card::VM_Net_Card()
 	MAC = "";
 	Hostname = "";
 	Port = 0;
-	VLAN = 0;
 	Use_TUN_TAP_Script = true;
 	TUN_TAP_Script = "";
 	Interface_Name = "";
@@ -3385,7 +3357,6 @@ VM_Net_Card::VM_Net_Card( const VM_Net_Card &nc )
 	IP = nc.Get_IP_Address();
 	MAC = nc.Get_MAC_Address();
 	Port = nc.Get_Port();
-	VLAN = nc.Get_VLAN();
 	Use_TUN_TAP_Script = nc.Get_Use_TUN_TAP_Script();
 	TUN_TAP_Script = nc.Get_TUN_TAP_Script();
 	Interface_Name = nc.Get_Interface_Name();
@@ -3400,7 +3371,6 @@ bool VM_Net_Card::operator==( const VM_Net_Card &nc ) const
 		IP == nc.Get_IP_Address() &&
 		MAC == nc.Get_MAC_Address() &&
 		Port == nc.Get_Port() &&
-		VLAN == nc.Get_VLAN() &&
 		Use_TUN_TAP_Script == nc.Get_Use_TUN_TAP_Script() &&
 		TUN_TAP_Script == nc.Get_TUN_TAP_Script() &&
 		Interface_Name == nc.Get_Interface_Name() &&
@@ -3619,16 +3589,6 @@ int VM_Net_Card::Get_Port() const
 void VM_Net_Card::Set_Port( int p )
 {
 	Port = p;
-}
-
-int VM_Net_Card::Get_VLAN() const
-{
-	return VLAN;
-}
-
-void VM_Net_Card::Set_VLAN( int vl )
-{
-	VLAN = vl;
 }
 
 bool VM_Net_Card::Get_Use_TUN_TAP_Script() const

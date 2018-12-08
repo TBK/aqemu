@@ -254,12 +254,6 @@ void Network_Widget::Connect_Slots()
 	connect( ui.Edit_macaddr, SIGNAL(textChanged(const QString &)),
 			 this, SIGNAL(Changed()) );
 	
-	connect( ui.CH_vlan, SIGNAL(clicked()),
-			 this, SIGNAL(Changed()) );
-	
-	connect( ui.SB_vlan, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changed()) );
-	
 	connect( ui.CH_name, SIGNAL(clicked()),
 			 this, SIGNAL(Changed()) );
 	
@@ -478,12 +472,6 @@ void Network_Widget::Disconnect_Slots()
 				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_macaddr, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changed()) );
-	
-	disconnect( ui.CH_vlan, SIGNAL(clicked()),
-				this, SIGNAL(Changed()) );
-	
-	disconnect( ui.SB_vlan, SIGNAL(valueChanged(int)),
 				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_name, SIGNAL(clicked()),
@@ -761,37 +749,37 @@ void Network_Widget::on_Items_List_currentItemChanged( QListWidgetItem *current,
 
 void Network_Widget::on_TB_Help_clicked()
 {
-	// -net nic[,vlan=n][,macaddr=addr][,model=type][,name=name]
+	// -net nic[,macaddr=addr][,model=type][,name=name]
 	if( ui.CB_Network_Type->currentText() == "nic" )
-		QMessageBox::information( this, tr("nic"), tr("-net nic[,vlan=n][,macaddr=addr][,model=type][,name=name] \nCreate a new Network Interface Card and connect it to VLAN n (n = 0 is the default). The NIC is an ne2k_pci by default on the PC target. Optionally, the MAC address can be changed to addr and a name can be assigned for use in monitor commands. If no \'-net\' option is specified, a single NIC is created. Qemu can emulate several different models of network card. Valid values for type are i82551, i82557b, i82559er, ne2k_pci, ne2k_isa, pcnet, rtl8139, e1000, smc91c111, lance and mcf_fec. Not all devices are supported on all targets. Use -net nic,model=? for a list of available devices for your target.") );
+		QMessageBox::information( this, tr("nic"), tr("-net nic[,macaddr=addr][,model=type][,name=name] \nCreate a new Network Interface Card and connect it to Virtual LAN n (n = 0 is the default). The NIC is an ne2k_pci by default on the PC target. Optionally, the MAC address can be changed to addr and a name can be assigned for use in monitor commands. If no \'-net\' option is specified, a single NIC is created. Qemu can emulate several different models of network card. Valid values for type are i82551, i82557b, i82559er, ne2k_pci, ne2k_isa, pcnet, rtl8139, e1000, smc91c111, lance and mcf_fec. Not all devices are supported on all targets. Use -net nic,model=? for a list of available devices for your target.") );
 	
-	// -net user[,vlan=n][,hostname=name][,name=name]
+	// -net user[,hostname=name][,name=name]
 	else if( ui.CB_Network_Type->currentText() == "user" )
-		QMessageBox::information( this, tr("user"), tr("-net user[,vlan=n][,hostname=name][,name=name] \nUse the user mode network stack which requires no administrator privilege to run. \'hostname=name\' can be used to specify the client hostname reported by the builtin DHCP server.") );
+		QMessageBox::information( this, tr("user"), tr("-net user[,hostname=name][,name=name] \nUse the user mode network stack which requires no administrator privilege to run. \'hostname=name\' can be used to specify the client hostname reported by the builtin DHCP server.") );
 	
 	// -net channel,port:dev
 	else if( ui.CB_Network_Type->currentText() == "channel" )
 		QMessageBox::information( this, tr("channel"), tr("-net channel,port:dev \nForward \'user\' TCP connection to port port to character device dev") );
 	
-	// -net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]
+	// -net tap[,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]
 	else if( ui.CB_Network_Type->currentText() == "tap" )
-		QMessageBox::information( this, tr("tap"), tr("-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile] \nConnect the host TAP network interface name to VLAN n, use the network script file to configure it and the network script dfile to deconfigure it. If name is not provided, the OS automatically provides one. \'fd\'=h can be used to specify the handle of an already opened host TAP interface. The default network configure script is \'/etc/qemu-ifup\' and the default network deconfigure script is \'/etc/qemu-ifdown\'. Use \'script=no\' or \'downscript=no\' to disable script execution.") );
+		QMessageBox::information( this, tr("tap"), tr("-net tap[,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile] \nConnect the host TAP network interface name to Virtual LAN n, use the network script file to configure it and the network script dfile to deconfigure it. If name is not provided, the OS automatically provides one. \'fd\'=h can be used to specify the handle of an already opened host TAP interface. The default network configure script is \'/etc/qemu-ifup\' and the default network deconfigure script is \'/etc/qemu-ifdown\'. Use \'script=no\' or \'downscript=no\' to disable script execution.") );
 	
-	// -net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
+	// -net socket[,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
 	else if( ui.CB_Network_Type->currentText() == "socket" )
-		QMessageBox::information( this, tr("socket"), tr("-net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port] \nConnect the VLAN n to a remote VLAN in another QEMU virtual machine using a TCP socket connection. If \'listen\' is specified, QEMU waits for incoming connections on port (host is optional). \'connect\' is used to connect to another QEMU instance using the \'listen\' option. \'fd\'=h specifies an already opened TCP socket.") );
+		QMessageBox::information( this, tr("socket"), tr("-net socket[,name=name][,fd=h][,listen=[host]:port][,connect=host:port] \nConnect the Virtual LAN n to a remote Virtual LAN in another QEMU virtual machine using a TCP socket connection. If \'listen\' is specified, QEMU waits for incoming connections on port (host is optional). \'connect\' is used to connect to another QEMU instance using the \'listen\' option. \'fd\'=h specifies an already opened TCP socket.") );
 	
-	// -net socket[,vlan=n][,name=name][,fd=h][,mcast=maddr:port]
+	// -net socket[,name=name][,fd=h][,mcast=maddr:port]
 	else if( ui.CB_Network_Type->currentText() == "multicast socket" )
-		QMessageBox::information( this, tr("socket"), tr("-net socket[,vlan=n][,name=name][,fd=h][,mcast=maddr:port] \nCreate a VLAN n shared with another QEMU virtual machines using a UDP multicast socket, effectively making a bus for every QEMU with same multicast address maddr and port. \nNOTES: \n1. Several QEMU can be running on different hosts and share same bus (assuming correct multicast setup for these hosts). \n2. mcast support is compatible with User Mode Linux (argument \'ethN=mcast\'), see http://user-mode-linux.sf.net. \n3. Use \'fd=h\' to specify an already opened UDP multicast socket.") );
+		QMessageBox::information( this, tr("socket"), tr("-net socket[,name=name][,fd=h][,mcast=maddr:port] \nCreate a Virtual LAN n shared with another QEMU virtual machines using a UDP multicast socket, effectively making a bus for every QEMU with same multicast address maddr and port. \nNOTES: \n1. Several QEMU can be running on different hosts and share same bus (assuming correct multicast setup for these hosts). \n2. mcast support is compatible with User Mode Linux (argument \'ethN=mcast\'), see http://user-mode-linux.sf.net. \n3. Use \'fd=h\' to specify an already opened UDP multicast socket.") );
 	
-	// -net vde[,vlan=n][,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
+	// -net vde[,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
 	else if( ui.CB_Network_Type->currentText() == "vde" )
-		QMessageBox::information( this, tr("vde"), tr("-net vde[,vlan=n][,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode] \nConnect VLAN n to PORT n of a vde switch running on host and listening for incoming connections on socketpath. Use GROUP groupname and MODE octalmode to change default ownership and permissions for communication port. This option is available only if QEMU has been compiled with vde support enabled.") );
+		QMessageBox::information( this, tr("vde"), tr("-net vde[,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode] \nConnect Virtual LAN n to PORT n of a vde switch running on host and listening for incoming connections on socketpath. Use GROUP groupname and MODE octalmode to change default ownership and permissions for communication port. This option is available only if QEMU has been compiled with vde support enabled.") );
 	
-	// -net dump[,vlan=n][,file=file][,len=len]
+	// -net dump[,file=file][,len=len]
 	else if( ui.CB_Network_Type->currentText() == "dump" )
-		QMessageBox::information( this, tr("dump"), tr("-net dump[,vlan=n][,file=f][,len=n] \ndump traffic on vlan \'n\' to file \'f\' (max n bytes per packet)") );
+		QMessageBox::information( this, tr("dump"), tr("-net dump[,file=f][,len=n] \ndump traffic on v lan \'n\' to file \'f\' (max n bytes per packet)") );
 	
 	else
 	{
@@ -823,9 +811,6 @@ void Network_Widget::on_TB_Browse_downscript_clicked()
 void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 {
 	// Hide All
-	ui.CH_vlan->setVisible( false );
-	ui.SB_vlan->setVisible( false );
-	
 	ui.CH_macaddr->setVisible( false );
 	ui.Edit_macaddr->setVisible( false );
 	ui.TB_Generate_New_MAC->setVisible( false );
@@ -935,11 +920,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 	ui.CH_vhostfd->setVisible( false );
 	ui.SB_vhostfd->setVisible( false );
 	
-	// -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
+	// -net nic[,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
 	if( ui.CB_Network_Type->currentText() == "nic" )
 	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
 		
 		ui.CH_macaddr->setVisible( true );
 		ui.Edit_macaddr->setVisible( true );
@@ -957,13 +940,11 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.CH_vectors->setVisible( true );
 		ui.SB_vectors->setVisible( true );
 	}
-	// -net user[,vlan=n][,name=str][,net=addr[/mask]][,host=addr][,restrict=y|n]
+	// -net user[,name=str][,net=addr[/mask]][,host=addr][,restrict=y|n]
 	//			[,hostname=host][,dhcpstart=addr][,dns=addr][,tftp=dir][,bootfile=f]
 	//			[,hostfwd=rule][,guestfwd=rule][,smb=dir[,smbserver=addr]]
 	else if( ui.CB_Network_Type->currentText() == "user" )
 	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
 		
 		ui.CH_hostname->setVisible( true );
 		ui.Edit_hostname->setVisible( true );
@@ -1012,12 +993,10 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.Label_port_dev->setVisible( true );
 		ui.Edit_port_dev->setVisible( true );
 	}
-	// -net tap[,vlan=n][,name=str][,fd=h][,ifname=name][,script=file][,downscript=dfile]
+	// -net tap[,name=str][,fd=h][,ifname=name][,script=file][,downscript=dfile]
 	//		   [,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h]
 	else if( ui.CB_Network_Type->currentText() == "tap" )
 	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
 		
 		ui.CH_name->setVisible( true );
 		ui.Edit_name->setVisible( true );
@@ -1048,12 +1027,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.CH_vhostfd->setVisible( true );
 		ui.SB_vhostfd->setVisible( true );
 	}
-	// -net socket[,vlan=n][,name=str][,fd=h][,listen=[host]:port][,connect=host:port]
+	// -net socket[,name=str][,fd=h][,listen=[host]:port][,connect=host:port]
 	else if( ui.CB_Network_Type->currentText() == "socket" )
 	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
-		
 		ui.CH_name->setVisible( true );
 		ui.Edit_name->setVisible( true );
 		
@@ -1066,12 +1042,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.CH_connect->setVisible( true );
 		ui.Edit_connect->setVisible( true );
 	}
-	// -net socket[,vlan=n][,name=str][,fd=h][,mcast=maddr:port]
+	// -net socket[,name=str][,fd=h][,mcast=maddr:port]
 	else if( ui.CB_Network_Type->currentText() == "multicast socket" )
 	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
-		
 		ui.CH_name->setVisible( true );
 		ui.Edit_name->setVisible( true );
 		
@@ -1081,12 +1054,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.CH_mcast->setVisible( true );
 		ui.Edit_mcast->setVisible( true );
 	}
-	// -net vde[,vlan=n][,name=str][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
+	// -net vde[,name=str][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
 	else if( ui.CB_Network_Type->currentText() == "vde" )
-	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
-		
+	{		
 		ui.CH_name->setVisible( true );
 		ui.Edit_name->setVisible( true );
 		
@@ -1102,12 +1072,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.CH_mode->setVisible( true );
 		ui.Edit_mode->setVisible( true );
 	}
-	// -net dump[,vlan=n][,file=file][,len=len]
+	// -net dump[,file=file][,len=len]
 	else if( ui.CB_Network_Type->currentText() == "dump" )
 	{
-		ui.CH_vlan->setVisible( true );
-		ui.SB_vlan->setVisible( true );
-		
 		ui.CH_file->setVisible( true );
 		ui.Edit_file->setVisible( true );
 		
@@ -1307,9 +1274,6 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 	if( ! PSO_Net_hostfwd )
 	if( ! PSO_Net_guestfwd )
 	
-	ui.CH_vlan->setVisible( false );
-	ui.SB_vlan->setVisible( false );
-	
 	ui.CH_macaddr->setVisible( false );
 	ui.Edit_macaddr->setVisible( false );
 	ui.TB_Generate_New_MAC->setVisible( false );
@@ -1420,10 +1384,6 @@ VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const
 	// MAC
 	card.Use_MAC_Address( ui.CH_macaddr->isChecked() );
 	card.Set_MAC_Address( ui.Edit_macaddr->text() );
-	
-	// VLAN
-	card.Use_VLAN( ui.CH_vlan->isChecked() );
-	card.Set_VLAN( ui.SB_vlan->value() );
 	
 	// name
 	card.Use_Name( ui.CH_name->isChecked() );
@@ -1655,9 +1615,6 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 	ui.CH_macaddr->setChecked( card.Use_MAC_Address() );
 	ui.Edit_macaddr->setText( card.Get_MAC_Address() );
 	
-	// VLAN
-	ui.CH_vlan->setChecked( card.Use_VLAN() );
-	ui.SB_vlan->setValue( card.Get_VLAN() );
 	
 	// name
 	ui.CH_name->setChecked( card.Use_Name() );
@@ -1833,12 +1790,12 @@ bool Network_Widget::Net_Card_is_Valid()
 	
 	switch( ui.CB_Network_Type->currentIndex() )
 	{
-		// -net nic[,vlan=n][,macaddr=addr][,model=type][,name=name]
+		// -net nic[,macaddr=addr][,model=type][,name=name]
 		case 0:
 			u_macaddr = u_name = true;
 			break;
 		
-		// -net user[,vlan=n][,hostname=name][,name=name]
+		// -net user[,hostname=name][,name=name]
 		case 1:
 			u_hostname = u_name = true;
 			break;
@@ -1848,27 +1805,27 @@ bool Network_Widget::Net_Card_is_Valid()
 			u_port_dev = true;
 			break;
 		
-		// -net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]
+		// -net tap[,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]
 		case 3:
 			u_name = u_ifname = u_script = u_downscript = true;
 			break;
 		
-		// -net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
+		// -net socket[,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
 		case 4:
 			u_name = u_listen = u_connect = true;
 			break;
 		
-		// -net socket[,vlan=n][,name=name][,fd=h][,mcast=maddr:port]
+		// -net socket[,name=name][,fd=h][,mcast=maddr:port]
 		case 5:
 			u_name = u_mcast = true;
 			break;
 		
-		// -net vde[,vlan=n][,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
+		// -net vde[,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
 		case 6:
 			u_name = u_sock = u_group = u_mode = true;
 			break;
 		
-		// -net dump[,vlan=n][,file=file][,len=len]
+		// -net dump[,file=file][,len=len]
 		case 7:
 			u_file = u_len = true;
 			break;

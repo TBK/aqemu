@@ -140,9 +140,6 @@ void Old_Network_Widget::Connect_Slots()
 	connect( ui.SB_Port, SIGNAL(valueChanged(int)),
 			 this, SIGNAL(Changed()) );
 	
-	connect( ui.SB_VLAN, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changed()) );
-	
 	connect( ui.CH_TUN_TAP_Script, SIGNAL(clicked()),
 			 this, SIGNAL(Changed()) );
 	
@@ -174,9 +171,6 @@ void Old_Network_Widget::Disconnect_Slots()
 				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_Port, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changed()) );
-	
-	disconnect( ui.SB_VLAN, SIGNAL(valueChanged(int)),
 				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_TUN_TAP_Script, SIGNAL(clicked()),
@@ -310,8 +304,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -334,8 +326,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( true );
 			ui.Edit_TUN_TAP_Script->setEnabled( true );
 			ui.TB_Browse_TUN_Script->setEnabled( true );
@@ -358,8 +348,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -382,8 +370,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -406,8 +392,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -430,8 +414,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -441,7 +423,7 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.SB_File_Descriptor->setEnabled( false );
 			break;
 			
-		case 6: // create shared VLAN via UDP multicast socket
+		case 6: // create shared Virtual LAN via UDP multicast socket
             if(set_net_mode)
     			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Multicast );
 			
@@ -454,8 +436,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -478,8 +458,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( true );
 			ui.Edit_MAC_Address->setEnabled( true );
 			ui.TB_Generate_New_MAC->setEnabled( true );
-			ui.Label_VLAN->setEnabled( true );
-			ui.SB_VLAN->setEnabled( true );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -502,8 +480,6 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.Label_MAC->setEnabled( false );
 			ui.Edit_MAC_Address->setEnabled( false );
 			ui.TB_Generate_New_MAC->setEnabled( false );
-			ui.Label_VLAN->setEnabled( false );
-			ui.SB_VLAN->setEnabled( false );
 			ui.CH_TUN_TAP_Script->setEnabled( false );
 			ui.Edit_TUN_TAP_Script->setEnabled( false );
 			ui.TB_Browse_TUN_Script->setEnabled( false );
@@ -553,11 +529,6 @@ void Old_Network_Widget::on_Edit_MAC_Address_textChanged()
 void Old_Network_Widget::on_SB_Port_valueChanged( int i )
 {
 	Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Port( i );
-}
-
-void Old_Network_Widget::on_SB_VLAN_valueChanged( int i )
-{
-	Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_VLAN( i );
 }
 
 void Old_Network_Widget::on_CH_TUN_TAP_Script_stateChanged( int state )
@@ -657,7 +628,6 @@ void Old_Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card &card )
 	ui.Edit_IP_Address->setText( card.Get_IP_Address() );
 	ui.Edit_MAC_Address->setText( card.Get_MAC_Address() );
 	ui.SB_Port->setValue( card.Get_Port() );
-	ui.SB_VLAN->setValue( card.Get_VLAN() );
 	ui.CH_TUN_TAP_Script->setChecked( card.Get_Use_TUN_TAP_Script() );
 	ui.Edit_TUN_TAP_Script->setText( card.Get_TUN_TAP_Script() );
 	ui.Edit_Interface_Name->setText( card.Get_Interface_Name() );

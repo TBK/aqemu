@@ -54,7 +54,6 @@ class Old_Network_Widget: public QWidget
 		void on_Edit_IP_Address_textChanged();
 		void on_Edit_MAC_Address_textChanged();
 		void on_SB_Port_valueChanged( int i );
-		void on_SB_VLAN_valueChanged( int i );
 		void on_CH_TUN_TAP_Script_stateChanged( int state );
 		void on_Edit_TUN_TAP_Script_textChanged();
 		void on_Edit_Interface_Name_textChanged();

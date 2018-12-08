@@ -312,32 +312,6 @@
             </item>
            </layout>
           </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="CH_vlan">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>vlan</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QSpinBox" name="SB_vlan">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
           <item row="4" column="0">
            <widget class="QCheckBox" name="CH_name">
             <property name="sizePolicy">
@@ -1180,8 +1154,6 @@
   <tabstop>TB_Generate_New_MAC</tabstop>
   <tabstop>CB_Network_Type</tabstop>
   <tabstop>TB_Help</tabstop>
-  <tabstop>CH_vlan</tabstop>
-  <tabstop>SB_vlan</tabstop>
   <tabstop>CH_name</tabstop>
   <tabstop>Edit_name</tabstop>
   <tabstop>CH_hostname</tabstop>
@@ -1223,22 +1195,6 @@
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>CH_vlan</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>SB_vlan</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>57</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>278</x>
-     <y>256</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>CH_macaddr</sender>
    <signal>toggled(bool)</signal>

@@ -762,9 +762,6 @@ class VM_Net_Card
 		int Get_Port() const;
 		void Set_Port( int p );
 		
-		int Get_VLAN() const;
-		void Set_VLAN( int vl );
-		
 		bool Get_Use_TUN_TAP_Script() const;
 		void Set_Use_TUN_TAP_Script( bool use );
 		
@@ -784,7 +781,6 @@ class VM_Net_Card
 		QString IP;
 		QString MAC;
 		int Port;
-		int VLAN;
 		bool Use_TUN_TAP_Script;
 		QString TUN_TAP_Script;
 		QString Interface_Name;
@@ -813,11 +809,6 @@ class VM_Net_Card_Native
 		void Use_MAC_Address( bool use );
 		const QString &Get_MAC_Address() const;
 		void Set_MAC_Address( const QString &ma );
-		
-		bool Use_VLAN() const;
-		void Use_VLAN( bool use );
-		int Get_VLAN() const;
-		void Set_VLAN( int vl );
 		
 		bool Use_Name() const;
 		void Use_Name( bool use );
@@ -986,7 +977,6 @@ class VM_Net_Card_Native
 		VM::Network_Mode_Nativ Network_Mode;
 		QString Card_Model;
 		QString MAC;
-		int VLAN;
 		QString Name;
 		QString Hostname;
 		QString PortDev;
@@ -1021,7 +1011,7 @@ class VM_Net_Card_Native
 		bool VHost;
 		int VHostFd;
 		
-		bool _Use_MAC, _Use_VLAN, _Use_Name, _Use_Hostname, _Use_File_Descriptor,
+		bool _Use_MAC, _Use_Name, _Use_Hostname, _Use_File_Descriptor,
 			 _Use_Interface_Name, _Use_TUN_TAP_Script, _Use_TUN_TAP_Down_Script,
 			 _Use_Listen, _Use_Connect, _Use_MCast, _Use_Sock, _Use_Port, _Use_Group,
 			 _Use_Mode, _Use_File, _Use_Len, _Use_Addr, _Use_Vectors, _Use_Net, 

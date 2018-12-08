@@ -274,16 +274,10 @@ Network options:
                 using an UDP tunnel
 -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                 configure a vhost-user network, backed by a chardev 'dev'
--netdev hubport,id=str,hubid=n
-                configure a hub port on QEMU VLAN 'n'
--net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
-                old way to create a new NIC and connect it to VLAN 'n'
                 (use the '-device devtype,netdev=str' option if possible instead)
--net dump[,vlan=n][,file=f][,len=n]
-                dump traffic on vlan 'n' to file 'f' (max n bytes per packet)
 -net none       use it alone to have zero network devices. If no -net option
                 is provided, the default is '-net nic -net user'
--net [user|tap|bridge|socket][,vlan=n][,option][,option][,...]
+-net [user|tap|bridge|socket][,option][,option][,...]
                 old way to initialize a host network interface
                 (use the -netdev option if possible instead)
 
