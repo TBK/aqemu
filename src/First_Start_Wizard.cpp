@@ -622,7 +622,7 @@ void First_Start_Wizard::retranslateUi()
 	ui.Label_Welcome_Text->setText( tr("Welcome to the AQEMU settings wizard!\nThis wizard will help you to choose options AQEMU needs to work correctly. Click on \"Next\" to go to next page or the \"Back\" button to go to the previous page.") );
 	ui.Label_Select_Language->setText( tr("Here you can choose the interface language") );
 	ui.Label_VM_Dir->setText( tr("Please set the folder for virtual machine configurations:") );
-	ui.Label_Find_Emulators->setText( tr("To work correctly AQEMU must find QEMU. To search automatically click on \"Search\". If the search can't find QEMU, you can reconfigure AQEMU later. You can do it in the \"File->Settings\" dialog.") );
+	ui.Label_Find_Emulators->setText( tr("To work correctly, AQEMU must find QEMU. To search automatically, click on \"Search\". If the search can't find QEMU, you can reconfigure AQEMU later. You can do it in the \"File->Settings\" dialog.") );
 	ui.Button_Find_Emulators->setText( tr("&Search") );
 	ui.Button_Skip_Find->setText( tr("S&kip Search") );
 	ui.Button_Edit->setText( tr("Set &Versions Manually") );
