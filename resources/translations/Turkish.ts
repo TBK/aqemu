@@ -4154,7 +4154,7 @@ Bir sonraki sayfaya gitmek için &quot;İleri&quot; düğmesine veya önceki say
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="777"/>
-        <source>Set &amp;Versions Manualy</source>
+        <source>Set &amp;Versions Manually</source>
         <translation>&amp;Sürümleri Elle Ayarla</translation>
     </message>
     <message>

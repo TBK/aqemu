@@ -356,7 +356,7 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 			// Set default emulators
 			if( qemuEmulatorsList.count() > 0 )
 			{
-				// Enable Edit Emulator Version Manualy Button
+				// Enable Edit Emulator Version Manually Button
 				ui.Button_Edit->setEnabled( true );
 
 				// Find and set QEMU default emulator
@@ -625,7 +625,7 @@ void First_Start_Wizard::retranslateUi()
 	ui.Label_Find_Emulators->setText( tr("To work correctly AQEMU must find QEMU. To search automatically click on \"Search\". If the search can't find QEMU, you can reconfigure AQEMU later. You can do it in the \"File->Settings\" dialog.") );
 	ui.Button_Find_Emulators->setText( tr("&Search") );
 	ui.Button_Skip_Find->setText( tr("S&kip Search") );
-	ui.Button_Edit->setText( tr("Set &Versions Manualy") );
+	ui.Button_Edit->setText( tr("Set &Versions Manually") );
 	ui.Label_Add_Emulator_Help->setText( "Help text (not written...)" );
 	ui.Label_Add_Emulator_Path->setText( "Path to the emulator directory" );
 	ui.Label_Add_Emulator_Version->setText( "Emulator version" );
