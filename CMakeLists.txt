@@ -173,11 +173,12 @@ SET( aqemu_man_page
     resources/docs/aqemu.1 )
 
 SET( translations 
+     translations/English.ts
+	 translations/French.ts
      translations/German.ts
-     transtations/Russian.ts
-     translations/Ukrainian.ts
-     translations/French.ts
-     translations/English.ts )
+	 translations/Russian.ts     
+	 translations/Turkish.ts
+	 translations/Ukrainian.ts )
 
 SET( files_to_translate ${files_to_translate} ${aqemu_headers} ${aqemu_sources} ${aqemu_ui} )
 

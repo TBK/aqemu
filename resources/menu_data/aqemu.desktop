@@ -10,3 +10,6 @@ Name=AQEMU
 Comment=Virtual machine manager
 Name[ru]=AQEMU
 Comment[ru]=Управление виртуальными машинами
+Name[tr]=AQEMU
+Comment[tr]=Sanal makine yöneticisi
+
