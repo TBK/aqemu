@@ -1618,7 +1618,7 @@ bool VM_Native_Storage_Device::Get_Native_Mode() const
 	if( UMedia ) return true;
 	if( USnapshot ) return true;
 	
-	// Nativ device options not used
+	// Native device options not used
 	return false;
 }
 

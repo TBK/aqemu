@@ -477,7 +477,7 @@ class Emulator
 		QMap<QString, Available_Devices> Devices; // VALUE is Available_Devices class
 };
 
-// Nativ Storage Device (QEMU >= 0.9.1 Device Style)
+// Native Storage Device (QEMU >= 0.9.1 Device Style)
 class VM_Native_Storage_Device
 {
 	public:
@@ -787,7 +787,7 @@ class VM_Net_Card
 		int File_Descriptor;
 };
 
-// Network Card Nativ
+// Network Card Native
 class VM_Net_Card_Native
 {
 	public:
