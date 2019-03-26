@@ -19,57 +19,54 @@
 ** Boston, MA  02110-1301, USA.
 **
 ****************************************************************************/
-//adapted code from http://stackoverflow.com/a/29160735 by AGo
+// adapted code from http://stackoverflow.com/a/29160735 by AGo
 
 #ifndef IP_EDIT_H
 #define IP_EDIT_H
 
-#include <QLineEdit>
 #include <QFrame>
+#include <QLineEdit>
 
-class CustomLineEdit : public QLineEdit
-{
-    Q_OBJECT
+class CustomLineEdit : public QLineEdit {
+  Q_OBJECT
 
-    public:
-	explicit CustomLineEdit(const QString & contents = "", QWidget *parent = 0);
-	virtual ~CustomLineEdit() {}
+public:
+  explicit CustomLineEdit(const QString &contents = "", QWidget *parent = 0);
+  virtual ~CustomLineEdit() {}
 
-    signals:
-	void jumpForward();
-	void jumpBackward();
+signals:
+  void jumpForward();
+  void jumpBackward();
 
-    public slots:
-	void jumpIn();
+public slots:
+  void jumpIn();
 
-    protected:
-	virtual void focusInEvent(QFocusEvent *event);
-	virtual void keyPressEvent(QKeyEvent * event);
-	virtual void mouseReleaseEvent(QMouseEvent *event);
+protected:
+  virtual void focusInEvent(QFocusEvent *event);
+  virtual void keyPressEvent(QKeyEvent *event);
+  virtual void mouseReleaseEvent(QMouseEvent *event);
 
-    private:
-	bool selectOnMouseRelease;
+private:
+  bool selectOnMouseRelease;
 };
 
-class IP_Edit : public QFrame
-{
-    Q_OBJECT
+class IP_Edit : public QFrame {
+  Q_OBJECT
 
-    public:
-	explicit IP_Edit(QWidget *parent = 0);
-	~IP_Edit();
-	void setText(const QString&);
-	QString text();
+public:
+  explicit IP_Edit(QWidget *parent = 0);
+  ~IP_Edit();
+  void setText(const QString &);
+  QString text();
 
-    signals:
-	void textChanged(const QString &);
+signals:
+  void textChanged(const QString &);
 
-    private:
-	CustomLineEdit* p1;
-	CustomLineEdit* p2;
-	CustomLineEdit* p3;
-	CustomLineEdit* p4;
+private:
+  CustomLineEdit *p1;
+  CustomLineEdit *p2;
+  CustomLineEdit *p3;
+  CustomLineEdit *p4;
 };
 
 #endif
-

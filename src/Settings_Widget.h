@@ -23,50 +23,47 @@
 #ifndef SETTINGS_WIDGET_H
 #define SETTINGS_WIDGET_H
 
-#include <QWidget>
-#include <QListWidget>
-#include <QWheelEvent>
-#include <QList>
-#include <QMap>
 #include <QBoxLayout>
+#include <QList>
+#include <QListWidget>
+#include <QMap>
+#include <QWheelEvent>
+#include <QWidget>
 
 class QTabWidget;
 class QStackedWidget;
 class QSize;
 class QSplitter;
 
-class My_List_Widget : public QListWidget
-{
-    Q_OBJECT
-    
-    public:
-        My_List_Widget(QWidget* parent);
+class My_List_Widget : public QListWidget {
+  Q_OBJECT
 
-    protected:
-        virtual void wheelEvent(QWheelEvent* e);
+public:
+  My_List_Widget(QWidget *parent);
+
+protected:
+  virtual void wheelEvent(QWheelEvent *e);
 };
 
-class Settings_Widget : public QWidget
-{
-    Q_OBJECT
+class Settings_Widget : public QWidget {
+  Q_OBJECT
 
-    public:
-        Settings_Widget(QTabWidget*, QBoxLayout::Direction dir, bool erase_margins = false, bool erase_parent_margins = true);
-        ~Settings_Widget();
-        void setIconSize(QSize);
-        void addToGroup(QString);
-        static void syncGroupIconSizes(QString);
-        void setCurrentIndex(int);
+public:
+  Settings_Widget(QTabWidget *, QBoxLayout::Direction dir,
+                  bool erase_margins = false, bool erase_parent_margins = true);
+  ~Settings_Widget();
+  void setIconSize(QSize);
+  void addToGroup(QString);
+  static void syncGroupIconSizes(QString);
+  void setCurrentIndex(int);
 
-    private:
-        My_List_Widget* list;
-        QStackedWidget* stack;
-        QSplitter* splitter;
+private:
+  My_List_Widget *list;
+  QStackedWidget *stack;
+  QSplitter *splitter;
 
-        QString my_Group;
-        static QMap<QString,QList<Settings_Widget*>> groups;
+  QString my_Group;
+  static QMap<QString, QList<Settings_Widget *>> groups;
 };
 
 #endif
-
-

@@ -27,63 +27,62 @@
 #include <QFileInfoList>
 #include <QSettings>
 
+#include "Create_HDD_Image_Window.h"
 #include "VM.h"
 #include "ui_VM_Wizard_Window.h"
-#include "Create_HDD_Image_Window.h"
 
-class VM_Wizard_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		VM_Wizard_Window( QWidget *parent = 0 );
-		void Set_VM_List( QList<Virtual_Machine*> *list );
-		
-		Virtual_Machine *New_VM;
-		
-	private slots:
-        void on_KVM_toggled(bool toggled);
-		bool Load_OS_Templates();
-        bool Create_New_VM(bool simulate = false);
-		QString Find_OS_Icon( const QString os_name );
-		
-		void on_Button_Back_clicked();
-		void on_Button_Next_clicked();
-		
-		void on_RB_VM_Template_toggled( bool on );
-		void on_RB_Generate_VM_toggled( bool on );
-		void on_CB_OS_Type_currentIndexChanged( int index );
-		void on_CB_Computer_Type_currentIndexChanged( int index );
-		void on_CB_Relese_Date_currentIndexChanged( int index );
-		
-		// Memory
-		void on_Memory_Size_valueChanged( int value );
-		void on_CB_RAM_Size_editTextChanged( const QString &text );
-		void on_CH_Remove_RAM_Size_Limitation_stateChanged ( int state );
-		void on_TB_Update_Available_RAM_Size_clicked();
-		void Update_RAM_Size_ComboBox( int freeRAM );
-		
-		void on_Edit_VM_Name_textEdited( const QString &text );
-		
-		void on_Button_New_HDD_clicked();
-		void on_Button_Existing_clicked();
-		
-	private:
-        void applyTemplate();
-        void By_Year();
-        void Typical_Or_Custom();
+class VM_Wizard_Window : public QDialog {
+  Q_OBJECT
 
-		QSettings Settings;
-		Ui::VM_Wizard_Window ui;
-		
-		QFileInfoList OS_Templates_List;
-		QList<Virtual_Machine*> *VM_List;
-		
-		Emulator Current_Emulator;
-		const Available_Devices* Current_Devices;
-		QMap<QString, Available_Devices> All_Systems;
-		
-		bool Use_Accelerator_Page;
+public:
+  VM_Wizard_Window(QWidget *parent = 0);
+  void Set_VM_List(QList<Virtual_Machine *> *list);
+
+  Virtual_Machine *New_VM;
+
+private slots:
+  void on_KVM_toggled(bool toggled);
+  bool Load_OS_Templates();
+  bool Create_New_VM(bool simulate = false);
+  QString Find_OS_Icon(const QString os_name);
+
+  void on_Button_Back_clicked();
+  void on_Button_Next_clicked();
+
+  void on_RB_VM_Template_toggled(bool on);
+  void on_RB_Generate_VM_toggled(bool on);
+  void on_CB_OS_Type_currentIndexChanged(int index);
+  void on_CB_Computer_Type_currentIndexChanged(int index);
+  void on_CB_Relese_Date_currentIndexChanged(int index);
+
+  // Memory
+  void on_Memory_Size_valueChanged(int value);
+  void on_CB_RAM_Size_editTextChanged(const QString &text);
+  void on_CH_Remove_RAM_Size_Limitation_stateChanged(int state);
+  void on_TB_Update_Available_RAM_Size_clicked();
+  void Update_RAM_Size_ComboBox(int freeRAM);
+
+  void on_Edit_VM_Name_textEdited(const QString &text);
+
+  void on_Button_New_HDD_clicked();
+  void on_Button_Existing_clicked();
+
+private:
+  void applyTemplate();
+  void By_Year();
+  void Typical_Or_Custom();
+
+  QSettings Settings;
+  Ui::VM_Wizard_Window ui;
+
+  QFileInfoList OS_Templates_List;
+  QList<Virtual_Machine *> *VM_List;
+
+  Emulator Current_Emulator;
+  const Available_Devices *Current_Devices;
+  QMap<QString, Available_Devices> All_Systems;
+
+  bool Use_Accelerator_Page;
 };
 
 #endif

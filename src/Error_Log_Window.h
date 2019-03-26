@@ -24,30 +24,29 @@
 #ifndef ERROR_LOG_WINDOW_H
 #define ERROR_LOG_WINDOW_H
 
-#include <QSettings>
 #include "ui_Error_Log_Window.h"
+#include <QSettings>
 
-class Error_Log_Window: public QDialog
-{
-    Q_OBJECT
+class Error_Log_Window : public QDialog {
+  Q_OBJECT
 
-    public:
-	Error_Log_Window( QWidget *parent = 0 );
+public:
+  Error_Log_Window(QWidget *parent = 0);
 
-	void Add_to_Log( const QString& err_str );
-	bool No_Show_Before_AQEMU_Restart() const;
-	bool No_Show_Before_VM_Restart() const;
-	bool No_Show_Deprecated_Options_Error() const;
+  void Add_to_Log(const QString &err_str);
+  bool No_Show_Before_AQEMU_Restart() const;
+  bool No_Show_Before_VM_Restart() const;
+  bool No_Show_Deprecated_Options_Error() const;
 
-    private slots:
-	void done(int);
+private slots:
+  void done(int);
 
-    private:
-	Ui::Error_Log_Window ui;
-	int Errors_Count;
-	QSettings Settings;
+private:
+  Ui::Error_Log_Window ui;
+  int Errors_Count;
+  QSettings Settings;
 
-	bool last_error_is_deprecated_option;
+  bool last_error_is_deprecated_option;
 };
 
 #endif

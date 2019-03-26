@@ -26,47 +26,48 @@
 #include "Utils.h"
 #include "VM_Devices.h"
 
-class System_Info
-{
-	public:
-		System_Info();
-		
-		static bool Update_VM_Computers_List();
-		
-		static VM::Emulator_Version Get_Emulator_Version( const QString &path = "" );
-		
-		static QMap<QString, QString> Find_QEMU_Binary_Files( const QString &path );
-		//static QMap<QString, QString> Find_KVM_Binary_Files( const QString &path );
-		static QString Find_IMG( const QStringList &paths );
-		
-		static Available_Devices Get_Emulator_Info( const QString &path, bool *ok,
-												   VM::Emulator_Version version, const QString &internalName );
-		static QString Get_Emulator_Help_Output( const QString &path );
-		static QString Get_Emulator_Output( const QString &path, const QStringList &args );
-		
-		static const QList<VM_USB> &Get_All_Host_USB();
-		static const QList<VM_USB> &Get_Used_USB_List();
-		static bool Add_To_Used_USB_List( const VM_USB &device );
-		static bool Delete_From_Used_USB_List( const VM_USB &device );
-		static bool Update_Host_USB();
-		
-		static void Get_Free_Memory_Size( int &allRAM, int &freeRAM );
-		
-		static QStringList Get_Host_FDD_List();
-		static QStringList Get_Host_CDROM_List();
-		
-        //removed legacy support for all QEMU versions before 2.0
-		static QMap<QString, Available_Devices> Emulator_QEMU_2_0;
+class System_Info {
+public:
+  System_Info();
 
-	private:
-		#ifdef Q_OS_LINUX
-		static bool Scan_USB_Sys( QList<VM_USB> &list );
-		static bool Scan_USB_Proc( QList<VM_USB> &list );
-		static bool Read_SysFS_File( const QString &path, QString &data );
-		#endif
-		
-		static QList<VM_USB> All_Host_USB;
-		static QList<VM_USB> Used_Host_USB;
+  static bool Update_VM_Computers_List();
+
+  static VM::Emulator_Version Get_Emulator_Version(const QString &path = "");
+
+  static QMap<QString, QString> Find_QEMU_Binary_Files(const QString &path);
+  // static QMap<QString, QString> Find_KVM_Binary_Files( const QString &path );
+  static QString Find_IMG(const QStringList &paths);
+
+  static Available_Devices Get_Emulator_Info(const QString &path, bool *ok,
+                                             VM::Emulator_Version version,
+                                             const QString &internalName);
+  static QString Get_Emulator_Help_Output(const QString &path);
+  static QString Get_Emulator_Output(const QString &path,
+                                     const QStringList &args);
+
+  static const QList<VM_USB> &Get_All_Host_USB();
+  static const QList<VM_USB> &Get_Used_USB_List();
+  static bool Add_To_Used_USB_List(const VM_USB &device);
+  static bool Delete_From_Used_USB_List(const VM_USB &device);
+  static bool Update_Host_USB();
+
+  static void Get_Free_Memory_Size(int &allRAM, int &freeRAM);
+
+  static QStringList Get_Host_FDD_List();
+  static QStringList Get_Host_CDROM_List();
+
+  // removed legacy support for all QEMU versions before 2.0
+  static QMap<QString, Available_Devices> Emulator_QEMU_2_0;
+
+private:
+#ifdef Q_OS_LINUX
+  static bool Scan_USB_Sys(QList<VM_USB> &list);
+  static bool Scan_USB_Proc(QList<VM_USB> &list);
+  static bool Read_SysFS_File(const QString &path, QString &data);
+#endif
+
+  static QList<VM_USB> All_Host_USB;
+  static QList<VM_USB> Used_Host_USB;
 };
 
 #endif

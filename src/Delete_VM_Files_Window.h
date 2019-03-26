@@ -23,50 +23,48 @@
 #ifndef DELETE_VM_FILES_WINDOW_H
 #define DELETE_VM_FILES_WINDOW_H
 
-#include "ui_Delete_VM_Files_Window.h"
 #include "VM.h"
+#include "ui_Delete_VM_Files_Window.h"
 
-struct File_List_Item
-{
-	bool Hard_Drive;
-	QString Name;
-	QString Path;
+struct File_List_Item {
+  bool Hard_Drive;
+  QString Name;
+  QString Path;
 };
 
 class QHeaderView;
 
-class Delete_VM_Files_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Delete_VM_Files_Window( QWidget *parent = 0 );
-		Delete_VM_Files_Window( Virtual_Machine *vm, QWidget *parent = 0 );
-        ~Delete_VM_Files_Window();
-		void Set_VM( Virtual_Machine *vm );
-	
-    private slots:
-		void on_RB_Show_HDD_toggled( bool checked );
-		
-        void Start_Page();
-        void Selected_Files_Page();
-        void Selected_Only_VM_Page();
-		void Add_To_Files_List( const File_List_Item &item );
-		bool Path_Valid( const QString &path );
-		void Clear_List();
-        void done(int);
-	
-	private:
-        bool Do_Delete();
-        void init();
+class Delete_VM_Files_Window : public QDialog {
+  Q_OBJECT
 
-		Ui::Delete_VM_Files_Window ui;
-		QList<File_List_Item> File_List_Items;
-		QString VM_Name;
-		QString VM_Path;
+public:
+  Delete_VM_Files_Window(QWidget *parent = 0);
+  Delete_VM_Files_Window(Virtual_Machine *vm, QWidget *parent = 0);
+  ~Delete_VM_Files_Window();
+  void Set_VM(Virtual_Machine *vm);
 
-        QHeaderView *hv;
-        QHeaderView *hv2;
+private slots:
+  void on_RB_Show_HDD_toggled(bool checked);
+
+  void Start_Page();
+  void Selected_Files_Page();
+  void Selected_Only_VM_Page();
+  void Add_To_Files_List(const File_List_Item &item);
+  bool Path_Valid(const QString &path);
+  void Clear_List();
+  void done(int);
+
+private:
+  bool Do_Delete();
+  void init();
+
+  Ui::Delete_VM_Files_Window ui;
+  QList<File_List_Item> File_List_Items;
+  QString VM_Name;
+  QString VM_Path;
+
+  QHeaderView *hv;
+  QHeaderView *hv2;
 };
 
 #endif

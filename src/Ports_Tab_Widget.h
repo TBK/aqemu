@@ -28,50 +28,49 @@
 
 class Device_Manager_Widget;
 
-class Ports_Tab_Widget: public QWidget
-{
-	Q_OBJECT
-	
-	public:
-		Ports_Tab_Widget( QWidget *parent = 0 );
-		
-		QList<VM_Port> Get_Serial_Ports() const;
-		void Set_Serial_Ports( const QList<VM_Port> &list );
-		
-		QList<VM_Port> Get_Parallel_Ports() const;
-		void Set_Parallel_Ports( const QList<VM_Port> &list );
-		
-		QList<VM_USB> Get_USB_Ports() const;
-		void Set_USB_Ports( const QList<VM_USB> &list );
-		
-		void Clear_Old_Ports();
+class Ports_Tab_Widget : public QWidget {
+  Q_OBJECT
 
-        void syncLayout(Device_Manager_Widget*);
-		
-	private:
-		QString Get_Port_Info( const VM_Port &port );
-		QString Get_USB_Port_Info( const VM_USB &port );
-		
-	private slots:
-		void on_TB_Add_Serial_Port_clicked();
-		void on_TB_Add_Parallel_Port_clicked();
-		void on_TB_Add_USB_Port_clicked();
-		void on_TB_Edit_Port_clicked();
-		void on_TB_Delete_Port_clicked();
-		
-		void on_Ports_Table_itemDoubleClicked( QTableWidgetItem *item );
-		
-	signals:
-		void Settings_Changed();
-		
-	private:
-		Ui::Ports_Tab_Widget ui;
-		
-		int Index;
-		
-		QMap<int, VM_Port> Serial_Ports;
-		QMap<int, VM_Port> Parallel_Ports;
-		QMap<int, VM_USB> USB_Ports;
+public:
+  Ports_Tab_Widget(QWidget *parent = 0);
+
+  QList<VM_Port> Get_Serial_Ports() const;
+  void Set_Serial_Ports(const QList<VM_Port> &list);
+
+  QList<VM_Port> Get_Parallel_Ports() const;
+  void Set_Parallel_Ports(const QList<VM_Port> &list);
+
+  QList<VM_USB> Get_USB_Ports() const;
+  void Set_USB_Ports(const QList<VM_USB> &list);
+
+  void Clear_Old_Ports();
+
+  void syncLayout(Device_Manager_Widget *);
+
+private:
+  QString Get_Port_Info(const VM_Port &port);
+  QString Get_USB_Port_Info(const VM_USB &port);
+
+private slots:
+  void on_TB_Add_Serial_Port_clicked();
+  void on_TB_Add_Parallel_Port_clicked();
+  void on_TB_Add_USB_Port_clicked();
+  void on_TB_Edit_Port_clicked();
+  void on_TB_Delete_Port_clicked();
+
+  void on_Ports_Table_itemDoubleClicked(QTableWidgetItem *item);
+
+signals:
+  void Settings_Changed();
+
+private:
+  Ui::Ports_Tab_Widget ui;
+
+  int Index;
+
+  QMap<int, VM_Port> Serial_Ports;
+  QMap<int, VM_Port> Parallel_Ports;
+  QMap<int, VM_USB> USB_Ports;
 };
 
 #endif

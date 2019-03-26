@@ -26,27 +26,26 @@
 
 #include "ui_Copy_VM_Window.h"
 
-class Copy_VM_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Copy_VM_Window( QWidget *parent = 0 );
-		
-		QString Get_New_VM_Name() const;
-		bool Get_Copy_Disk_Images() const;
-		bool Get_Copy_Floppy() const;
-		bool Get_Copy_Hard_Drive() const;
-		
-		void Add_VM_Machine_Name( const QString &name );
-	
-	private slots:
-        void VM_Name_Changed(const QString&);
-		void done(int);
-	
-	private:
-		Ui::Copy_VM_Window ui;
-		QStringList All_Machine_Names;
+class Copy_VM_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Copy_VM_Window(QWidget *parent = 0);
+
+  QString Get_New_VM_Name() const;
+  bool Get_Copy_Disk_Images() const;
+  bool Get_Copy_Floppy() const;
+  bool Get_Copy_Hard_Drive() const;
+
+  void Add_VM_Machine_Name(const QString &name);
+
+private slots:
+  void VM_Name_Changed(const QString &);
+  void done(int);
+
+private:
+  Ui::Copy_VM_Window ui;
+  QStringList All_Machine_Names;
 };
 
 #endif

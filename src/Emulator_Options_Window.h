@@ -23,42 +23,41 @@
 #ifndef EMULATOR_OPTIONS_WINDOW_H
 #define EMULATOR_OPTIONS_WINDOW_H
 
-#include <QSettings>
 #include "VM_Devices.h"
 #include "ui_Emulator_Options_Window.h"
+#include <QSettings>
 
-class Emulator_Options_Window: public QDialog
-{
-    Q_OBJECT
+class Emulator_Options_Window : public QDialog {
+  Q_OBJECT
 
-    public:
-	Emulator_Options_Window( QWidget *parent = 0 );
+public:
+  Emulator_Options_Window(QWidget *parent = 0);
 
-	Emulator Get_Emulator() const;
-	void Set_Emulator( const Emulator &emul );
+  Emulator Get_Emulator() const;
+  void Set_Emulator(const Emulator &emul);
 
-	void Set_All_Emulators_Names( const QStringList &allNames );
+  void Set_All_Emulators_Names(const QStringList &allNames);
 
-    private slots:
-	void done(int);
-	void on_Edit_Name_textChanged();
-	void on_Edit_Path_to_Dir_textChanged();
-	void on_Button_Find_clicked();
-	void on_TB_Browse_clicked();
-	void on_Table_Systems_itemDoubleClicked( QTableWidgetItem *item );
-	void on_RB_QEMU_toggled( bool checked );
-	void on_RB_KVM_toggled( bool checked );
+private slots:
+  void done(int);
+  void on_Edit_Name_textChanged();
+  void on_Edit_Path_to_Dir_textChanged();
+  void on_Button_Find_clicked();
+  void on_TB_Browse_clicked();
+  void on_Table_Systems_itemDoubleClicked(QTableWidgetItem *item);
+  void on_RB_QEMU_toggled(bool checked);
+  void on_RB_KVM_toggled(bool checked);
 
-	bool Name_Valid( const QString &name );
-	void Update_Emulator();
+  bool Name_Valid(const QString &name);
+  void Update_Emulator();
 
-    private:
-	Ui::Emulator_Options_Window ui;
+private:
+  Ui::Emulator_Options_Window ui;
 
-	QStringList All_Emulators_Names;
-	QSettings Settings;
-	Emulator Current_Emulator;
-	bool Update_Info; // Update emulator information before exit
+  QStringList All_Emulators_Names;
+  QSettings Settings;
+  Emulator Current_Emulator;
+  bool Update_Info; // Update emulator information before exit
 };
 
 #endif

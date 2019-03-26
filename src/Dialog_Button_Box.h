@@ -24,10 +24,10 @@
 #define DIALOG_BUTTON_BOX_H
 
 #include <QDialogButtonBox>
-#include <QListWidget>
-#include <QWheelEvent>
 #include <QList>
+#include <QListWidget>
 #include <QMap>
+#include <QWheelEvent>
 
 class QTabWidget;
 class QStackedWidget;
@@ -36,20 +36,17 @@ class QSize;
 class QSplitter;
 class QPaintEvent;
 
-class Dialog_Button_Box : public QDialogButtonBox
-{
-    Q_OBJECT
+class Dialog_Button_Box : public QDialogButtonBox {
+  Q_OBJECT
 
-    public:
-        Dialog_Button_Box(QWidget*);
-        Dialog_Button_Box();
-        ~Dialog_Button_Box();
+public:
+  Dialog_Button_Box(QWidget *);
+  Dialog_Button_Box();
+  ~Dialog_Button_Box();
 
-    private:
-        void init();
-        void showEvent(QShowEvent*);
+private:
+  void init();
+  void showEvent(QShowEvent *);
 };
 
 #endif
-
-

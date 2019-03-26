@@ -23,30 +23,30 @@
 #ifndef ADD_USB_PORT_WINDOW_H
 #define ADD_USB_PORT_WINDOW_H
 
-#include "ui_Add_USB_Port_Window.h"
 #include "VM_Devices.h"
+#include "ui_Add_USB_Port_Window.h"
 
-class Add_USB_Port_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Add_USB_Port_Window( QWidget *parent = 0 );
-		
-		VM_USB Get_Port() const;
-		void Set_Port( const VM_USB &port );
-	
-	private slots:
-		void on_Button_Update_Host_USB_clicked();
-		void on_RB_QEMU_USB_clicked( bool checked );
-		void on_RB_Host_USB_clicked( bool checked );
-		void on_Table_Host_USB_currentItemChanged( QTableWidgetItem *current, QTableWidgetItem *previous );
-		void on_RB_Show_All_toggled( bool on );
-		
-	private:
-		Ui::Add_USB_Port_Window ui;
-		QList<VM_USB> USB_Host_List;
-		mutable VM_USB Current_Item;
+class Add_USB_Port_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Add_USB_Port_Window(QWidget *parent = 0);
+
+  VM_USB Get_Port() const;
+  void Set_Port(const VM_USB &port);
+
+private slots:
+  void on_Button_Update_Host_USB_clicked();
+  void on_RB_QEMU_USB_clicked(bool checked);
+  void on_RB_Host_USB_clicked(bool checked);
+  void on_Table_Host_USB_currentItemChanged(QTableWidgetItem *current,
+                                            QTableWidgetItem *previous);
+  void on_RB_Show_All_toggled(bool on);
+
+private:
+  Ui::Add_USB_Port_Window ui;
+  QList<VM_USB> USB_Host_List;
+  mutable VM_USB Current_Item;
 };
 
 #endif

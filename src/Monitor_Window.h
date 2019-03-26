@@ -25,30 +25,29 @@
 
 #include "ui_Monitor_Window.h"
 
-class Monitor_Window: public QDialog
-{
-	Q_OBJECT
+class Monitor_Window : public QDialog {
+  Q_OBJECT
 
-	public:
-		Monitor_Window( QWidget *parent = 0 );
-		
-	public slots:
-		void Add_QEMU_Out( const QString &new_text );
-		
-	signals:
-		void Command_Sent( const QString &com );
-		void Closing_Win();
-		
-	private slots:
-		void on_Button_Run_clicked();
-		void on_Button_Font_clicked();
-		QFont Get_Font();
-		
-	protected:
-		void closeEvent( QCloseEvent *event );
-		
-	private:
-		Ui::Monitor_Window ui;
+public:
+  Monitor_Window(QWidget *parent = 0);
+
+public slots:
+  void Add_QEMU_Out(const QString &new_text);
+
+signals:
+  void Command_Sent(const QString &com);
+  void Closing_Win();
+
+private slots:
+  void on_Button_Run_clicked();
+  void on_Button_Font_clicked();
+  QFont Get_Font();
+
+protected:
+  void closeEvent(QCloseEvent *event);
+
+private:
+  Ui::Monitor_Window ui;
 };
 
 #endif

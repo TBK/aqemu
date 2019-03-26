@@ -67,7 +67,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="All_Tabs">
      <property name="currentIndex">
-      <number>6</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Tab_General">
       <attribute name="icon">
@@ -1698,8 +1698,8 @@ with embedded display</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>623</width>
-            <height>1010</height>
+            <width>622</width>
+            <height>853</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">

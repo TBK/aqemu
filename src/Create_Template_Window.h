@@ -24,40 +24,41 @@
 #define CREATE_TEMPLATE_WINDOW_H
 
 #include <QFlags>
-#include <QSettings>
 #include <QList>
+#include <QSettings>
 
 #include "ui_Create_Template_Window.h"
 
-class Create_Template_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Create_Template_Window( QWidget *parent = 0 );
-		void Set_VM_Path( const QString &path );
-		
-		// Options For Create Templates
-		enum Template_Option { Template_Save_FDD_CD=0x2,
-							   Template_Save_HDD=0x40,
-							   Template_Save_Network=0x800,
-							   Template_Save_Default=0x16000,
-							   Template_Save_Ports=0x320000 };
-		
-		Q_DECLARE_FLAGS( Template_Options, Template_Option )
-	
-	private slots:
-		void on_TB_VM_File_Browse_clicked();
-		void on_TB_Template_Folder_Browse_clicked();
-		void on_Button_Create_clicked();
-	
-	private:
-		bool Name_is_Unique();
-		QSettings Settings;
-		QList<QString> List_Templates;
-		Ui::Create_Template_Window ui;
+class Create_Template_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Create_Template_Window(QWidget *parent = 0);
+  void Set_VM_Path(const QString &path);
+
+  // Options For Create Templates
+  enum Template_Option {
+    Template_Save_FDD_CD = 0x2,
+    Template_Save_HDD = 0x40,
+    Template_Save_Network = 0x800,
+    Template_Save_Default = 0x16000,
+    Template_Save_Ports = 0x320000
+  };
+
+  Q_DECLARE_FLAGS(Template_Options, Template_Option)
+
+private slots:
+  void on_TB_VM_File_Browse_clicked();
+  void on_TB_Template_Folder_Browse_clicked();
+  void on_Button_Create_clicked();
+
+private:
+  bool Name_is_Unique();
+  QSettings Settings;
+  QList<QString> List_Templates;
+  Ui::Create_Template_Window ui;
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS( Create_Template_Window::Template_Options )
+Q_DECLARE_OPERATORS_FOR_FLAGS(Create_Template_Window::Template_Options)
 
 #endif

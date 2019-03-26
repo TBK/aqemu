@@ -25,36 +25,29 @@
 
 #include "Highlighted_Label.h"
 
-Highlighted_Label::Highlighted_Label(QWidget* parent) : QLabel(parent)
-{
-    QPalette pal = palette();
-    QColor background_color = pal.color(QPalette::Window);
-    QColor link_color = pal.color(QPalette::Link);
+Highlighted_Label::Highlighted_Label(QWidget *parent) : QLabel(parent) {
+  QPalette pal = palette();
+  QColor background_color = pal.color(QPalette::Window);
+  QColor link_color = pal.color(QPalette::Link);
 
-    if ( calculateContrast(background_color,link_color) > 3.0 )
-    {
-	setStyleSheet(R"(
-	Highlighted_Label
-	    {
-		font-size: medium;
-		font-weight: 600;
-		color: palette(link);
-	    }
-	)");
-    }
-    else
-    {
-	setStyleSheet(R"(
-	Highlighted_Label
-	    {
-		font-size: medium;
-		font-weight: 600;
-	    }
-	)");
-    }
+  if (calculateContrast(background_color, link_color) > 3.0) {
+    setStyleSheet(R"(
+        Highlighted_Label
+            {
+            font-size: medium;
+            font-weight: 600;
+            color: palette(link);
+            }
+        )");
+  } else {
+    setStyleSheet(R"(
+        Highlighted_Label
+            {
+            font-size: medium;
+            font-weight: 600;
+            }
+        )");
+  }
 }
 
-Highlighted_Label::Highlighted_Label()
-{
-}
-
+Highlighted_Label::Highlighted_Label() {}

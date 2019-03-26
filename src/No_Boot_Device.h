@@ -26,26 +26,24 @@
 #include "VM.h"
 #include "ui_No_Boot_Device.h"
 
-class No_Boot_Device: public QDialog
-{
+class No_Boot_Device : public QDialog {
 
-	Q_OBJECT
-	
-	public:
-		No_Boot_Device( QWidget *parent = 0 );
-		~No_Boot_Device();
-		void Set_VM( const Virtual_Machine &vm );
+  Q_OBJECT
 
-    private slots:
-        void Change_Boot_Order();
-        void Device_Manager();
-        void Special_Image();
-        void Kernel_Boot();
-        void Computer_Port();
+public:
+  No_Boot_Device(QWidget *parent = 0);
+  ~No_Boot_Device();
+  void Set_VM(const Virtual_Machine &vm);
 
-    private:
-		Ui::No_Boot_Device ui;
+private slots:
+  void Change_Boot_Order();
+  void Device_Manager();
+  void Special_Image();
+  void Kernel_Boot();
+  void Computer_Port();
+
+private:
+  Ui::No_Boot_Device ui;
 };
 
 #endif
-

@@ -23,31 +23,30 @@
 #ifndef HDD_IMAGE_INFO_H
 #define HDD_IMAGE_INFO_H
 
-#include <QProcess>
 #include "VM_Devices.h"
+#include <QProcess>
 
-class HDD_Image_Info : public QObject
-{
-    Q_OBJECT
+class HDD_Image_Info : public QObject {
+  Q_OBJECT
 
-    public:
-	HDD_Image_Info( QObject *parent = 0 );
-	~HDD_Image_Info();
-	VM::Disk_Info Get_Disk_Info() const;
+public:
+  HDD_Image_Info(QObject *parent = 0);
+  ~HDD_Image_Info();
+  VM::Disk_Info Get_Disk_Info() const;
 
-    public slots:
-	void Update_Disk_Info( const QString &path );
+public slots:
+  void Update_Disk_Info(const QString &path);
 
-    private slots:
-	void Parse_Info( int exitCode, QProcess::ExitStatus exitStatus );
-	void Clear_Info();
+private slots:
+  void Parse_Info(int exitCode, QProcess::ExitStatus exitStatus);
+  void Clear_Info();
 
-    signals:
-	void Completed( bool ok );
+signals:
+  void Completed(bool ok);
 
-    private:
-	VM::Disk_Info Info;
-	QProcess* QEMU_IMG_Proc;
+private:
+  VM::Disk_Info Info;
+  QProcess *QEMU_IMG_Proc;
 };
 
 #endif

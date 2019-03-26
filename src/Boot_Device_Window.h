@@ -23,29 +23,28 @@
 #ifndef BOOT_DEVICE_WINDOW_H
 #define BOOT_DEVICE_WINDOW_H
 
-#include "ui_Boot_Device_Window.h"
 #include "VM_Devices.h"
+#include "ui_Boot_Device_Window.h"
 
-class Boot_Device_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Boot_Device_Window( QWidget *parent = 0 );
-		
-		QList<VM::Boot_Order> data() const;
-		void setData( const QList<VM::Boot_Order> &list );
-		
-		bool useBootMenu() const;
-		void setUseBootMenu( bool use );
-		
-	private slots:
-		void on_TB_Up_clicked();
-		void on_TB_Down_clicked();
-		int Get_Current_Index();
-		
-	private:
-		Ui::Boot_Device_Window ui;
+class Boot_Device_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Boot_Device_Window(QWidget *parent = 0);
+
+  QList<VM::Boot_Order> data() const;
+  void setData(const QList<VM::Boot_Order> &list);
+
+  bool useBootMenu() const;
+  void setUseBootMenu(bool use);
+
+private slots:
+  void on_TB_Up_clicked();
+  void on_TB_Down_clicked();
+  int Get_Current_Index();
+
+private:
+  Ui::Boot_Device_Window ui;
 };
 
 #endif

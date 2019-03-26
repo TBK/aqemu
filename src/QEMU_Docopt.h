@@ -25,7 +25,7 @@
 #include "docopt/docopt.h"
 
 static const char QEMU_USAGE[] =
-R"(QEMU emulator version 3.1.0
+    R"(QEMU emulator version 3.1.0
 Copyright (c) 2003-2018 Fabrice Bellard and the QEMU Project developers
 usage: qemu-system-x86_64 [options] [disk_image]
 
@@ -501,5 +501,4 @@ More information on the QEMU project at <https://qemu.org>.)";
 
 */
 
-void parse_qemu( int argc, char *argv[] );
-
+void parse_qemu(int argc, char *argv[]);

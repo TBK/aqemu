@@ -23,35 +23,34 @@
 #ifndef SPICE_SETTINGS_WIDGET_H
 #define SPICE_SETTINGS_WIDGET_H
 
-#include "ui_SPICE_Settings_Widget.h"
 #include "VM_Devices.h"
+#include "ui_SPICE_Settings_Widget.h"
 
-class SPICE_Settings_Widget: public QWidget
-{
-	Q_OBJECT
-	
-	public:
-		SPICE_Settings_Widget( QWidget *parent );
-		
-		const VM_SPICE &Get_Settings( bool &settingsValidated );
-		void Set_Settings( const VM_SPICE &settings );
-		
-		void Set_PSO_GXL( bool use );
-        void My_Set_Enabled( bool enabled );
-		
-	private slots:
-		void on_TB_Up_clicked();
-		void on_TB_Down_clicked();
-		
-	signals:
-		void State_Changed();
-	
-	private:
-		void Show_Renderer_List( const QList<VM::SPICE_Renderer> &list );
-		
-		Ui::SPICE_Settings_Widget ui;
+class SPICE_Settings_Widget : public QWidget {
+  Q_OBJECT
 
-        VM_SPICE spiceSettings;
+public:
+  SPICE_Settings_Widget(QWidget *parent);
+
+  const VM_SPICE &Get_Settings(bool &settingsValidated);
+  void Set_Settings(const VM_SPICE &settings);
+
+  void Set_PSO_GXL(bool use);
+  void My_Set_Enabled(bool enabled);
+
+private slots:
+  void on_TB_Up_clicked();
+  void on_TB_Down_clicked();
+
+signals:
+  void State_Changed();
+
+private:
+  void Show_Renderer_List(const QList<VM::SPICE_Renderer> &list);
+
+  Ui::SPICE_Settings_Widget ui;
+
+  VM_SPICE spiceSettings;
 };
 
 #endif

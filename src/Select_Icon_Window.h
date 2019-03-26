@@ -27,25 +27,24 @@
 
 #include "ui_Select_Icon_Window.h"
 
-class Select_Icon_Window: public QDialog
-{
-	Q_OBJECT
+class Select_Icon_Window : public QDialog {
+  Q_OBJECT
 
 public:
-	Select_Icon_Window( QWidget *parent = 0 );
-	void Set_Previous_Icon_Path( const QString& path );
-	QString Get_New_Icon_Path() const;
+  Select_Icon_Window(QWidget *parent = 0);
+  void Set_Previous_Icon_Path(const QString &path);
+  QString Get_New_Icon_Path() const;
 
 private slots:
-	void done(int);
-	void on_Button_Browse_clicked();	
-	void on_All_Icons_List_itemDoubleClicked( QListWidgetItem *item );
+  void done(int);
+  void on_Button_Browse_clicked();
+  void on_All_Icons_List_itemDoubleClicked(QListWidgetItem *item);
 
 private:
-	bool GB_Locked;
-	QSettings Settings;
-	QString New_Icon_Path;
-	Ui::Select_Icon_Window ui;
+  bool GB_Locked;
+  QSettings Settings;
+  QString New_Icon_Path;
+  Ui::Select_Icon_Window ui;
 };
 
 #endif

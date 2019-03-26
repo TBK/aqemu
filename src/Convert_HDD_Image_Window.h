@@ -23,57 +23,55 @@
 #ifndef CONVERT_HDD_IMAGE_WINDOW_H
 #define CONVERT_HDD_IMAGE_WINDOW_H
 
+#include "HDD_Image_Info.h"
+#include "ui_Convert_HDD_Image_Window.h"
 #include <QProgressDialog>
 #include <QThread>
-#include "ui_Convert_HDD_Image_Window.h"
-#include "HDD_Image_Info.h"
 
-class Convert_HDD_Thread : public QThread
-{
-	Q_OBJECT
-	
-	public:
-		Convert_HDD_Thread();
-		void Set_Args( const QStringList &args );
-		const QString &Get_Error_Message() const;
-		
-	protected:
-		void run();
-		
-	signals:
-		void Conversion_Complete( bool ok );
-		
-	private:
-		QString Error_Message;
-		QStringList Arguments;
+class Convert_HDD_Thread : public QThread {
+  Q_OBJECT
+
+public:
+  Convert_HDD_Thread();
+  void Set_Args(const QStringList &args);
+  const QString &Get_Error_Message() const;
+
+protected:
+  void run();
+
+signals:
+  void Conversion_Complete(bool ok);
+
+private:
+  QString Error_Message;
+  QStringList Arguments;
 };
 
-class Convert_HDD_Image_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Convert_HDD_Image_Window( QWidget *parent = 0 );
-		
-	private slots:
-		void on_Button_Browse_Base_clicked();
-		void on_Button_Browse_Output_clicked();
-		void on_CB_Output_Format_currentIndexChanged( const QString &text );
-		void on_Button_Convert_clicked();
-		void Update_Info( bool ok );
-		
-		void Conversion_Done( bool ok );
-		void Cancel_Convertion();
-		
-		bool Get_QEMU_IMG_Info();
-		
-	private:
-		Ui::Convert_HDD_Image_Window ui;
-		Convert_HDD_Thread Conv_Thread;
-		QProgressDialog *ProgDial;
-		
-		HDD_Image_Info *HDD_Info;
-		bool Valid_Info;
+class Convert_HDD_Image_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Convert_HDD_Image_Window(QWidget *parent = 0);
+
+private slots:
+  void on_Button_Browse_Base_clicked();
+  void on_Button_Browse_Output_clicked();
+  void on_CB_Output_Format_currentIndexChanged(const QString &text);
+  void on_Button_Convert_clicked();
+  void Update_Info(bool ok);
+
+  void Conversion_Done(bool ok);
+  void Cancel_Convertion();
+
+  bool Get_QEMU_IMG_Info();
+
+private:
+  Ui::Convert_HDD_Image_Window ui;
+  Convert_HDD_Thread Conv_Thread;
+  QProgressDialog *ProgDial;
+
+  HDD_Image_Info *HDD_Info;
+  bool Valid_Info;
 };
 
 #endif

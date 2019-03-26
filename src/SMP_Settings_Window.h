@@ -23,28 +23,28 @@
 #ifndef SMP_SETTINGS_WINDOW_H
 #define SMP_SETTINGS_WINDOW_H
 
-#include "ui_SMP_Settings_Window.h"
 #include "VM_Devices.h"
+#include "ui_SMP_Settings_Window.h"
 
-class SMP_Settings_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		SMP_Settings_Window( QWidget *parent = 0 );
-		
-		VM::SMP_Options Get_Values() const;
-		void Set_Values( const VM::SMP_Options &smp, unsigned short PSO_SMP_Count, bool PSO_SMP_Cores,
-						 bool PSO_SMP_Threads, bool PSO_SMP_Sockets, bool PSO_SMP_MaxCPUs );
-		
-		void Set_SMP_Count( int count );
-	
-	private slots:
-		void done(int);
-	
-	private:
-		Ui::SMP_Settings_Window ui;
-		VM::SMP_Options Backup_SMP;
+class SMP_Settings_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  SMP_Settings_Window(QWidget *parent = 0);
+
+  VM::SMP_Options Get_Values() const;
+  void Set_Values(const VM::SMP_Options &smp, unsigned short PSO_SMP_Count,
+                  bool PSO_SMP_Cores, bool PSO_SMP_Threads,
+                  bool PSO_SMP_Sockets, bool PSO_SMP_MaxCPUs);
+
+  void Set_SMP_Count(int count);
+
+private slots:
+  void done(int);
+
+private:
+  Ui::SMP_Settings_Window ui;
+  VM::SMP_Options Backup_SMP;
 };
 
 #endif

@@ -23,31 +23,30 @@
 #ifndef CREATE_HDD_IMAGE_WINDOW_H
 #define CREATE_HDD_IMAGE_WINDOW_H
 
-#include "ui_Create_HDD_Image_Window.h"
 #include "VM_Devices.h"
+#include "ui_Create_HDD_Image_Window.h"
 
-class Create_HDD_Image_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Create_HDD_Image_Window( QWidget *parent = 0 );
-		
-		const QString &Get_Image_File_Name();
-		void Set_Image_File_Name( const QString &path );
-		void Set_Image_Info( VM::Disk_Info info );
-		void Set_Image_Size( double gb );
-		
-	private slots:
-		void on_Button_Browse_Base_Image_clicked();
-		void on_Button_Browse_New_Image_clicked();
-		void on_CB_Format_currentIndexChanged( const QString &text );
-		void on_Button_Create_clicked();
-		void on_Button_Format_Help_clicked();
-		
-	private:
-		Ui::Create_HDD_Image_Window ui;
-		QString Image_File_Name;
+class Create_HDD_Image_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Create_HDD_Image_Window(QWidget *parent = 0);
+
+  const QString &Get_Image_File_Name();
+  void Set_Image_File_Name(const QString &path);
+  void Set_Image_Info(VM::Disk_Info info);
+  void Set_Image_Size(double gb);
+
+private slots:
+  void on_Button_Browse_Base_Image_clicked();
+  void on_Button_Browse_New_Image_clicked();
+  void on_CB_Format_currentIndexChanged(const QString &text);
+  void on_Button_Create_clicked();
+  void on_Button_Format_Help_clicked();
+
+private:
+  Ui::Create_HDD_Image_Window ui;
+  QString Image_File_Name;
 };
 
 #endif

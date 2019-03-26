@@ -24,44 +24,42 @@
 #define AQEMU_MAIN_H
 
 #include <QApplication>
-#include <QSettings>
-#include <QObject>
 #include <QList>
+#include <QObject>
+#include <QSettings>
 
 class Virtual_Machine;
 class Run_Guard;
 class Main_Window;
 class AQEMU_Service;
 
-class AQEMU_Main : public QObject
-{
-    friend AQEMU_Service;
+class AQEMU_Main : public QObject {
+  friend AQEMU_Service;
 
-    Q_OBJECT
+  Q_OBJECT
 
-    public:
-        AQEMU_Main();
-        ~AQEMU_Main();
-        int main(int argc, char *argv[]);
+public:
+  AQEMU_Main();
+  ~AQEMU_Main();
+  int main(int argc, char *argv[]);
 
+private:
+  int main_window();
 
-    private:
-        int main_window();
+  int load_settings();
+  void load_language();
+  void first_start_wizard();
+  void register_qresource();
+  void init_qsettings();
+  void upgrade_settings();
+  int find_data_folders();
+  void log_settings();
+  int root_warning();
+  void vm_dir_exists_or_create();
 
-        int load_settings();
-        void load_language();
-        void first_start_wizard();
-        void register_qresource();
-        void init_qsettings();
-        void upgrade_settings();
-        int find_data_folders();
-        void log_settings();
-        int root_warning();
-        void vm_dir_exists_or_create();
-
-        QSettings* settings;
-        QApplication* application;
-        Main_Window* window;
+  QSettings *settings;
+  QApplication *application;
+  Main_Window *window;
 };
 
 #endif

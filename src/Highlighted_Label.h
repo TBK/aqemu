@@ -25,14 +25,12 @@
 #ifndef HIGHLIGHTED_LABEL_H
 #define HIGHLIGHTED_LABEL_H
 
-class Highlighted_Label : public QLabel
-{
-    Q_OBJECT
+class Highlighted_Label : public QLabel {
+  Q_OBJECT
 
-    public:
-	Highlighted_Label(QWidget*);
-	Highlighted_Label();
-
+public:
+  Highlighted_Label(QWidget *);
+  Highlighted_Label();
 };
 
 #endif // HIGHLIGHTED_LABEL_H

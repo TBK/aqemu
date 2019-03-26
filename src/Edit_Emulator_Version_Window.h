@@ -23,26 +23,25 @@
 #ifndef EDIT_EMULATOR_VERSION_WINDOW_H
 #define EDIT_EMULATOR_VERSION_WINDOW_H
 
-#include "ui_Edit_Emulator_Version_Window.h"
 #include "VM_Devices.h"
+#include "ui_Edit_Emulator_Version_Window.h"
 
-class Edit_Emulator_Version_Window: public QDialog
-{
-	Q_OBJECT
-	
-	public:
-		Edit_Emulator_Version_Window( QWidget *parent = 0 );
-		
-		void Load_Emulators();
-	
-	private slots:
-		void done(int);
-		void on_List_Emulators_currentRowChanged( int currentRow );
-		void CB_Versions_currentIndexChanged( const QString &text );
-		
-	private:
-		Ui::Edit_Emulator_Version_Window ui;
-		QList<Emulator> Emulators;
+class Edit_Emulator_Version_Window : public QDialog {
+  Q_OBJECT
+
+public:
+  Edit_Emulator_Version_Window(QWidget *parent = 0);
+
+  void Load_Emulators();
+
+private slots:
+  void done(int);
+  void on_List_Emulators_currentRowChanged(int currentRow);
+  void CB_Versions_currentIndexChanged(const QString &text);
+
+private:
+  Ui::Edit_Emulator_Version_Window ui;
+  QList<Emulator> Emulators;
 };
 
 #endif
