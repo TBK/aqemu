@@ -1,0 +1,7 @@
+# IDE
+## VS Code
+.vscode/
+
+## Qt Creator files
+CMakeLists\.txt\.user
+*.bz2
