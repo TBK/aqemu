@@ -33,24 +33,24 @@ Highlighted_Label::Highlighted_Label(QWidget* parent) : QLabel(parent)
 
     if ( calculateContrast(background_color,link_color) > 3.0 )
     {
-        setStyleSheet(R"(
-        Highlighted_Label
-            {
-                font-size: medium;
-                font-weight: 600;
-                color: palette(link);
-            }
-        )");
+	setStyleSheet(R"(
+	Highlighted_Label
+	    {
+		font-size: medium;
+		font-weight: 600;
+		color: palette(link);
+	    }
+	)");
     }
     else
     {
-        setStyleSheet(R"(
-        Highlighted_Label
-            {
-                font-size: medium;
-                font-weight: 600;
-            }
-        )");
+	setStyleSheet(R"(
+	Highlighted_Label
+	    {
+		font-size: medium;
+		font-weight: 600;
+	    }
+	)");
     }
 }
 

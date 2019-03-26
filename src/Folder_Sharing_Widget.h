@@ -32,47 +32,47 @@ class Device_Manager_Widget;
 
 class Folder_Sharing_Widget: public QWidget
 {
-	Q_OBJECT
-	
-	public:
-		Folder_Sharing_Widget( QWidget *parent = 0 );
-		~Folder_Sharing_Widget();
-		void Set_VM( const Virtual_Machine &vm );
-		
-		void Set_Enabled( bool on );
-		
-		QList<VM_Shared_Folder> Shared_Folders;
+    Q_OBJECT
 
-        void syncLayout(Device_Manager_Widget*);
-		
-	public slots:
-		void Update_Enabled_Actions();
-		void Update_List_Mode();
-		
-	signals:
-		void Folder_Changed();
-	
-	private slots:
-		// For Context Menu
-		void on_Folders_List_customContextMenuRequested( const QPoint &pos );
-		void on_Folders_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous );
-		void on_Folders_List_itemDoubleClicked( QListWidgetItem *item );
+    public:
+	Folder_Sharing_Widget( QWidget *parent = 0 );
+	~Folder_Sharing_Widget();
+	void Set_VM( const Virtual_Machine &vm );
 
-		void on_actionAdd_Samba_Folder_triggered();
-		void on_actionAdd_Folder_triggered();
-		void on_actionProperties_triggered();
-		void on_actionRemove_triggered();
-		void on_actionIcon_Mode_triggered();
-		void on_actionList_Mode_triggered();
-		
-		void Update_Icons();
-		
-	private:
-		bool Enabled;
-		
-		//Properties_Window *pw;
-		Ui::Folder_Sharing_Widget ui;
-		QMenu *Context_Menu;
+	void Set_Enabled( bool on );
+
+	QList<VM_Shared_Folder> Shared_Folders;
+
+	void syncLayout(Device_Manager_Widget*);
+
+    public slots:
+	void Update_Enabled_Actions();
+	void Update_List_Mode();
+
+    signals:
+	void Folder_Changed();
+
+    private slots:
+	// For Context Menu
+	void on_Folders_List_customContextMenuRequested( const QPoint &pos );
+	void on_Folders_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous );
+	void on_Folders_List_itemDoubleClicked( QListWidgetItem *item );
+
+	void on_actionAdd_Samba_Folder_triggered();
+	void on_actionAdd_Folder_triggered();
+	void on_actionProperties_triggered();
+	void on_actionRemove_triggered();
+	void on_actionIcon_Mode_triggered();
+	void on_actionList_Mode_triggered();
+
+	void Update_Icons();
+
+    private:
+	bool Enabled;
+
+	//Properties_Window *pw;
+	Ui::Folder_Sharing_Widget ui;
+	QMenu *Context_Menu;
 };
 
 #endif

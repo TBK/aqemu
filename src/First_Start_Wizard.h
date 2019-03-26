@@ -29,42 +29,42 @@
 
 class First_Start_Wizard: public QDialog
 {
-	Q_OBJECT
-	
-	public:
-		First_Start_Wizard( QWidget *parent = 0 );
-		bool Find_Emulators();
-	
-	private slots:
-		void on_Button_Cancel_clicked();
-		void on_Button_Back_clicked();
-		void on_Button_Next_clicked();
-		void on_Edit_VM_Dir_textChanged();
-		void on_TB_Browse_VM_Dir_clicked();
-		
-		void on_Button_Find_Emulators_clicked();
-		void on_Button_Skip_Find_clicked();
-		void on_Button_Edit_clicked();
-		
-		#ifdef Q_OS_WIN32
-		void on_TB_Add_Emulator_Browse_clicked();
-		void on_Button_Add_Emulator_Find_clicked();
-		void on_Button_Add_Emulator_Manual_Mode_clicked();
-		#endif
-		
-		void on_All_Pages_currentChanged( int index );
-		
-		void Load_Settings();
-		bool Save_Settings();
-		void retranslateUi();
-	
-	private:
-		Ui::First_Start_Wizard ui;
-		bool Next_Move;
-		bool Emulators_Find_Done;
-		QStringList Header_Captions;
-		QSettings Settings;
-		Emulator Emul;
+    Q_OBJECT
+
+    public:
+	First_Start_Wizard( QWidget *parent = 0 );
+	bool Find_Emulators();
+
+    private slots:
+	void on_Button_Cancel_clicked();
+	void on_Button_Back_clicked();
+	void on_Button_Next_clicked();
+	void on_Edit_VM_Dir_textChanged();
+	void on_TB_Browse_VM_Dir_clicked();
+
+	void on_Button_Find_Emulators_clicked();
+	void on_Button_Skip_Find_clicked();
+	void on_Button_Edit_clicked();
+
+#ifdef Q_OS_WIN32
+	void on_TB_Add_Emulator_Browse_clicked();
+	void on_Button_Add_Emulator_Find_clicked();
+	void on_Button_Add_Emulator_Manual_Mode_clicked();
+#endif
+
+	void on_All_Pages_currentChanged( int index );
+
+	void Load_Settings();
+	bool Save_Settings();
+	void retranslateUi();
+
+    private:
+	Ui::First_Start_Wizard ui;
+	bool Next_Move;
+	bool Emulators_Find_Done;
+	QStringList Header_Captions;
+	QSettings Settings;
+	Emulator Emul;
 };
 
 #endif

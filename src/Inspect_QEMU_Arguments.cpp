@@ -34,12 +34,12 @@
 #include <iostream>
 
 Inspect_QEMU_Arguments::Inspect_QEMU_Arguments( Virtual_Machine* vm, QWidget *parent )
-	: QDialog( parent )
+    : QDialog( parent )
 {
-	ui.setupUi( this );
+    ui.setupUi( this );
 
-	QString line = "";
-	
+    QString line = "";
+
     vm->Get_QEMU_Args();
 }
 

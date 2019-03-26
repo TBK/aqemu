@@ -6301,7 +6301,6 @@ To set this value, check &quot;Remove limitation on maximum amount of memory&quo
     <message>
         <location filename="Main_Window.ui" line="2529"/>
         <source>Native</source>
-        <oldsource>Nativ</oldsource>
         <translation>Нативный</translation>
     </message>
     <message>

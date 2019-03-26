@@ -30,8 +30,8 @@ class Highlighted_Label : public QLabel
     Q_OBJECT
 
     public:
-        Highlighted_Label(QWidget*);
-        Highlighted_Label();
+	Highlighted_Label(QWidget*);
+	Highlighted_Label();
 
 };
 

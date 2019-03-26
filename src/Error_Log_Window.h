@@ -29,25 +29,25 @@
 
 class Error_Log_Window: public QDialog
 {
-	Q_OBJECT
-	
-	public:
-		Error_Log_Window( QWidget *parent = 0 );
-		
-		void Add_to_Log( const QString& err_str );
-		bool No_Show_Before_AQEMU_Restart() const;
-		bool No_Show_Before_VM_Restart() const;
-        bool No_Show_Deprecated_Options_Error() const;
-		
-	private slots:
-		void done(int);
-		
-	private:
-		Ui::Error_Log_Window ui;
-		int Errors_Count;
-		QSettings Settings;
+    Q_OBJECT
 
-        bool last_error_is_deprecated_option;
+    public:
+	Error_Log_Window( QWidget *parent = 0 );
+
+	void Add_to_Log( const QString& err_str );
+	bool No_Show_Before_AQEMU_Restart() const;
+	bool No_Show_Before_VM_Restart() const;
+	bool No_Show_Deprecated_Options_Error() const;
+
+    private slots:
+	void done(int);
+
+    private:
+	Ui::Error_Log_Window ui;
+	int Errors_Count;
+	QSettings Settings;
+
+	bool last_error_is_deprecated_option;
 };
 
 #endif

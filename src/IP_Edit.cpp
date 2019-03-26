@@ -60,30 +60,30 @@ void CustomLineEdit::keyPressEvent(QKeyEvent * event)
     // Jump forward by Space
     if (key == Qt::Key_Space)
     {
-        emit jumpForward();
-        event->accept();
-        return;
+	emit jumpForward();
+	event->accept();
+	return;
     }
 
     // Jump Backward only from 0 cursor position
     if (cursorPos == 0)
     {
-        if ((key == Qt::Key_Left) || (key == Qt::Key_Backspace))
-        {
-            emit jumpBackward();
-            event->accept();
-            return;
-        }
+	if ((key == Qt::Key_Left) || (key == Qt::Key_Backspace))
+	{
+	    emit jumpBackward();
+	    event->accept();
+	    return;
+	}
     }
 
     // Jump forward from last postion by right arrow
     if (cursorPos == text().count())
     {
-        if (key == Qt::Key_Right) {
-            emit jumpForward();
-            event->accept();
-            return;
-        }
+	if (key == Qt::Key_Right) {
+	    emit jumpForward();
+	    event->accept();
+	    return;
+	}
     }
 
     // After key is placed cursor has new position
@@ -91,13 +91,13 @@ void CustomLineEdit::keyPressEvent(QKeyEvent * event)
     int freshCurPos = cursorPosition();
 
     if ((freshCurPos == 3) && (key != Qt::Key_Right))
-        emit jumpForward();
+	emit jumpForward();
 }
 
 void CustomLineEdit::mouseReleaseEvent(QMouseEvent *event)
 {
     if(!selectOnMouseRelease)
-        return;
+	return;
 
     selectOnMouseRelease = false;
     selectAll();
@@ -111,7 +111,7 @@ void makeCommonStyle(QWidget* line)
 
     auto lineedit = dynamic_cast<QLineEdit*>(line);
     if (lineedit)
-        lineedit->setAlignment(Qt::AlignCenter);
+	lineedit->setAlignment(Qt::AlignCenter);
     //line->setStyleSheet("QLineEdit { border: 0px none; }");
     //line->setFrame(false);
     line->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -152,7 +152,7 @@ IP_Edit::IP_Edit(QWidget *parent) :
     p2->setMaximumWidth(width);
     p3->setMaximumWidth(width);
     p4->setMaximumWidth(width);
-    
+
     lines.append(p1);
     lines.append(p2);
     lines.append(p3);
@@ -164,18 +164,18 @@ IP_Edit::IP_Edit(QWidget *parent) :
     setLayout(mainLayout);
 
     for (linesIterator = lines.begin(); linesIterator != lines.end(); ++linesIterator) {
-        makeCommonStyle(*linesIterator);
-        mainLayout->addWidget(*linesIterator);
+	makeCommonStyle(*linesIterator);
+	mainLayout->addWidget(*linesIterator);
 
-        if (*linesIterator != lines.last()) {
-            connect(*linesIterator, &CustomLineEdit::jumpForward,
-                    *(linesIterator+1), &CustomLineEdit::jumpIn);
-            mainLayout->addWidget(makeIpSplitter());
-        }
-        if (*linesIterator != lines.first()) {
-            connect(*linesIterator, &CustomLineEdit::jumpBackward,
-                    *(linesIterator-1), &CustomLineEdit::jumpIn);
-        }
+	if (*linesIterator != lines.last()) {
+	    connect(*linesIterator, &CustomLineEdit::jumpForward,
+		    *(linesIterator+1), &CustomLineEdit::jumpIn);
+	    mainLayout->addWidget(makeIpSplitter());
+	}
+	if (*linesIterator != lines.first()) {
+	    connect(*linesIterator, &CustomLineEdit::jumpBackward,
+		    *(linesIterator-1), &CustomLineEdit::jumpIn);
+	}
     }
     mainLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::MinimumExpanding, QSizePolicy::Fixed));
 
@@ -198,10 +198,10 @@ void IP_Edit::setText(const QString& s)
     auto list = s.split(".");
     if ( list.count() > 3 )
     {
-        p1->setText(list[0]);
-        p2->setText(list[1]);
-        p3->setText(list[2]);
-        p4->setText(list[3]);
+	p1->setText(list[0]);
+	p2->setText(list[1]);
+	p3->setText(list[2]);
+	p4->setText(list[3]);
     }
 }
 

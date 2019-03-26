@@ -32,23 +32,23 @@ class CustomLineEdit : public QLineEdit
     Q_OBJECT
 
     public:
-        explicit CustomLineEdit(const QString & contents = "", QWidget *parent = 0);
-        virtual ~CustomLineEdit() {}
+	explicit CustomLineEdit(const QString & contents = "", QWidget *parent = 0);
+	virtual ~CustomLineEdit() {}
 
     signals:
-        void jumpForward();
-        void jumpBackward();
+	void jumpForward();
+	void jumpBackward();
 
     public slots:
-        void jumpIn();
+	void jumpIn();
 
     protected:
-        virtual void focusInEvent(QFocusEvent *event);
-        virtual void keyPressEvent(QKeyEvent * event);
-        virtual void mouseReleaseEvent(QMouseEvent *event);
+	virtual void focusInEvent(QFocusEvent *event);
+	virtual void keyPressEvent(QKeyEvent * event);
+	virtual void mouseReleaseEvent(QMouseEvent *event);
 
     private:
-        bool selectOnMouseRelease;
+	bool selectOnMouseRelease;
 };
 
 class IP_Edit : public QFrame
@@ -56,19 +56,19 @@ class IP_Edit : public QFrame
     Q_OBJECT
 
     public:
-        explicit IP_Edit(QWidget *parent = 0);
-        ~IP_Edit();
-        void setText(const QString&);
-        QString text();
+	explicit IP_Edit(QWidget *parent = 0);
+	~IP_Edit();
+	void setText(const QString&);
+	QString text();
 
     signals:
-        void textChanged(const QString &);
+	void textChanged(const QString &);
 
     private:
-        CustomLineEdit* p1;
-        CustomLineEdit* p2;
-        CustomLineEdit* p3;
-        CustomLineEdit* p4;
+	CustomLineEdit* p1;
+	CustomLineEdit* p2;
+	CustomLineEdit* p3;
+	CustomLineEdit* p4;
 };
 
 #endif
