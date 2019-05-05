@@ -1631,10 +1631,10 @@ void Main_Window::Update_Disabled_Controls() {
   // Apply emulator
 
   // CPU
-  disconnect(ui.CB_CPU_Count, SIGNAL(editTextChanged(const QString &)), this,
-             SLOT(Validate_CPU_Count(const QString &)));
+  disconnect(ui.CB_CPU_Count, SIGNAL(editTextChanged(const QString &)),
+             this, SLOT(Validate_CPU_Count(const QString &)));
 
-  ui.CB_CPU_Count->clear();
+  //ui.CB_CPU_Count->clear();
 
   if (curComp.PSO_SMP_Count == 1) {
     ui.CB_CPU_Count->addItem(QString::number(1));
